@@ -86,7 +86,7 @@ echo $cache->get('key');
 ```
 
 # Cache Proxy
-This package ships with a handy helper class which will cache the result of every method call to your own class. This is done by wrapping your class in our cache proxy class. The first parameter to this class must be an instance of `Anteris\Cache\CacheRepository`, the second parameter must be an instance of your own class. An option third paramter can be passed an array of methods you would not like to cache the results of.
+This package ships with a handy helper class which will cache the result of every method call to your own class. This is done by wrapping your class in our cache proxy class. The first parameter to this class must be an instance of `Anteris\Cache\CacheRepository`, the second parameter must be an instance of your own class. An optional third parameter can be passed an array of methods you would not like to cache the results of.
 
 Below you will find a quick demonstration of how to use this.
 
