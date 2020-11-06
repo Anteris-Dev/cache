@@ -1,5 +1,7 @@
 # The Blazing Fast Cache Manager
-This zero-dependency cache manager was built for speed.
+[![Styling](https://github.com/Anteris-Dev/cache/workflows/Styling/badge.svg)](https://github.com/Anteris-Dev/cache/actions?query=workflow%3AStyling)
+
+This zero-dependency filesystem cache manager was built for speed. :zap:
 
 # To Install
 ```bash
