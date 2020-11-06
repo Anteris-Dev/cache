@@ -60,7 +60,7 @@ $cache->get('some-unset-key', false);
 
 // returns "94"
 $int = 50;
-$cache->get('some-unset-key', function () use ($int) {
+echo $cache->get('some-unset-key', function () use ($int) {
     return (($int - 3) * 2);
 });
 
