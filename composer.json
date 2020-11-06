@@ -1,5 +1,6 @@
 {
     "name": "anteris-dev/cache",
+    "description": "The zero-dependency filesystem cache manager built for speed.",
     "authors": [
         {
             "name": "Aidan Casey",
