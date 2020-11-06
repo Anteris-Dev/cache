@@ -17,6 +17,11 @@ class TestClass
         return "{$this->firstName} {$this->lastName}";
     }
 
+    public function realtimeName()
+    {
+        return $this->getName();
+    }
+
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;

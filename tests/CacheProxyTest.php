@@ -15,7 +15,9 @@ class CacheProxyTest extends TestCase
     protected function setUp(): void
     {
         $this->cache = new CacheRepository(__DIR__);
-        $this->class = new CacheProxy($this->cache, new TestClass);
+        $this->class = new CacheProxy($this->cache, new TestClass, [
+            'realtimeName',
+        ]);
     }
 
     protected function tearDown(): void
@@ -42,6 +44,18 @@ class CacheProxyTest extends TestCase
     public function test_it_proxies_static_method()
     {
         $this->assertEquals($this->class::sayHello(), 'Hi!');
+    }
+
+    /**
+     * @covers \Anteris\Cache\CacheProxy
+     * @covers \Anteris\Cache\CacheRepository
+     */
+    public function test_it_does_not_proxy_ignored_methods()
+    {
+        $this->assertEquals($this->class->realtimeName(), 'Test Case');
+        $this->class->firstName = 'Jim';
+        $this->class->lastName  = 'Bob';
+        $this->assertEquals($this->class->realtimeName(), 'Jim Bob');
     }
 
     /**

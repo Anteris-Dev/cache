@@ -14,10 +14,14 @@ class CacheProxy
     /** @var object Any class that we want to make cacheable. */
     private static object $class;
 
-    public function __construct(CacheRepository $cache, object $class)
+    /** @var array Any methods that we want to ignore in the cache. */
+    private static array $ignoreMethods;
+
+    public function __construct(CacheRepository $cache, object $class, array $ignoreMethods = [])
     {
-        static::$cache = $cache;
-        static::$class = $class;
+        static::$cache          = $cache;
+        static::$class          = $class;
+        static::$ignoreMethods  = $ignoreMethods;
     }
 
     /**
@@ -43,6 +47,10 @@ class CacheProxy
      */
     public static function __callStatic($name, $arguments)
     {
+        if (in_array($name, static::$ignoreMethods)) {
+            return call_user_func_array([static::$class, $name], $arguments);
+        }
+
         $key = static::class . $name . serialize($arguments);
 
         return static::$cache->get($key, function () use ($name, $arguments) {
